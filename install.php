@@ -1,8 +1,9 @@
 <?php
 require 'vendor/autoload.php';
 
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
+// In production set the environment variables within the application (heroku) do not use the env file
+// $dotenv = new Dotenv\Dotenv(__DIR__);
+// $dotenv->load();
 
 $db = new Mysqli(getenv('MYSQL_HOST'), getenv('MYSQL_USER'), getenv('MYSQL_PASS'), getenv('MYSQL_DB')); 
 
