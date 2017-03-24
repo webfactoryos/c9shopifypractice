@@ -6,10 +6,13 @@ require 'vendor/autoload.php';
 // $dotenv->load();
 
 $db = new Mysqli(getenv('MYSQL_HOST'), getenv('MYSQL_USER'), getenv('MYSQL_PASS'), getenv('MYSQL_DB')); 
+// SMW Added
+$store = $_GET['store'];
+echo $store;
 
 if (!empty($_POST)) {
 	
-	$store = $_POST['store'];
+   //	$store = $_POST['store'];
 
 	$factory = new RandomLib\Factory;
 	$generator = $factory->getMediumStrengthGenerator();
