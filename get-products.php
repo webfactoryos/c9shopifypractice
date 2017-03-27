@@ -9,9 +9,13 @@ use GuzzleHttp\Client;
 $db = new Mysqli(getenv('MYSQL_HOST'), getenv('MYSQL_USER'), getenv('MYSQL_PASS'), getenv('MYSQL_DB')); 
 
 $store = $_GET("shop"); 
+echo 'echoing store';
+echo $store;
 $select = $db->query("SELECT access_token FROM installs WHERE store = '$store'");
 $user = $select->fetch_object();
 $access_token = $user->access_token;
+echo 'echoing access token'
+echo $access_token;
 
 $client = new Client();
 
