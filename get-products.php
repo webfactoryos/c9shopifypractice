@@ -7,11 +7,15 @@ use GuzzleHttp\Client;
 // $dotenv->load();
 
 $db = new Mysqli(getenv('MYSQL_HOST'), getenv('MYSQL_USER'), getenv('MYSQL_PASS'), getenv('MYSQL_DB')); 
+$query = $_GET; 
+if (!isset($query['shop'])) {
+	exit;
+}
 
-$store = $_GET('shop'); 
+$store = $query['shop']; 
 echo 'echoing store';
-/* echo $store;
- $select = $db->query("SELECT access_token FROM installs WHERE store = '$store'");
+echo $store;
+/* $select = $db->query("SELECT access_token FROM installs WHERE store = '$store'");
  $user = $select->fetch_object();
 $access_token = $user->access_token;
 echo 'echoing access token';
