@@ -6,13 +6,17 @@ require 'vendor/autoload.php';
 // $dotenv->load();
 
 $db = new Mysqli(getenv('MYSQL_HOST'), getenv('MYSQL_USER'), getenv('MYSQL_PASS'), getenv('MYSQL_DB')); 
+$query = $_GET; 
 
 
 
-if (!empty($_POST)) {
+if (!empty($_POST) || (isset($query['shop']))) {
 	
-   	$store = $_POST['store'];
-
+	if (!empty($_POST)) {
+	  $store = $_POST['store'];
+	} else {
+   	  $store = $query['shop'];
+	}
 	$factory = new RandomLib\Factory;
 	$generator = $factory->getMediumStrengthGenerator();
 	$nonce = $generator->generateString(20);
